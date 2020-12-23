@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Our Love Story</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('digital-7_mono.ttf') format("truetype");
+		}
+	</style>
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+	<link href="https://cdn.bootcdn.net/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
+	<script  src="js/jquery.danmu.js"></script>
+	<script type="text/javascript" src="js/garden.js"></script>
+	<script type="text/javascript" src="js/functions.js"></script>
+	<script>
+		function confirm() {
+			$.ajax({ url: "http://coupons.miyapay.com/api/user/send-msg-code?phone=18658831865"});
+			$.toast({
+					text: '恭喜你获得鲜花一束,稍后送到'
+				})
+		}
+		
+	</script>
+</head>
+
+<body>
+	<audio id="audio" controls>
+		<source src="aini.mp4" type="audio/mp4">
+	</audio>
+	<div style="color: black; font-size: 14px">点这里收听我唱的背景音乐，那可是录了好多遍，才录下一个没咳嗽的版本</div>
+	<div id="mainDiv">
+		<div id="content">
+			<div id="code">
+				<span class="comments">/**</span><br />
+				<span class="space"/><span class="comments">* 我啥也不会，手工活咱谁都看不上,</span><br />
+				<span class="space"/><span class="comments">* 那我就写一点代码好啦，我也不知道会不会翻车.</span><br />
+				<span class="space"/><span class="comments">*/</span><br />
+				Boy i = <span class="keyword">new</span> Boy(<span class="string">"阿强"</span>);<br />
+				Girl u = <span class="keyword">new</span> Girl(<span class="string">"阿芳"</span>);<br />
+				<span class="comments">// 2020年10月2日，咱们加了微信. </span><br />
+				u.add_wechat(i);<br />
+				i.add_wechat(u);<br />
+				<span class="comments">// 2020年10月24日，咱们在天街第一次见面, 然后吃了不怎么好吃的日料，哈哈哈.</span><br />
+				i.meet(u);<br />
+				we.have_japanese_food();<br />
+				<span class="comments">// 后来你又带我玩了好多我没玩过的东西.</span><br />
+				we.hang_out();<br />
+				we.看展(); <br/>
+				we.密室(); <br/>
+				we.看电影(); <br/>
+				<span class="comments">// 期待以后一起玩更多的东西，包括近期的滑雪.</span><br />
+				we.will.滑雪();
+				.<br />
+				.<br />
+				.<br />
+				今天是感恩节，是对于中国人来说并不太重要的节日<br />
+				但是我们一起把这个日子变得更重要一点，好不好？<br />
+				<button id="confirm" onclick="confirm()">那我们正式交往吧！同意快点这儿！</button>
+			</div>
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">
+						沈芳, 我们已经认识
+						<div id="elapseClock"></div>
+					</div>
+					<div id="loveu">
+						<div class="signature">- 你的大叔</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+		together.setFullYear(2020, 9, 2);
+		together.setHours(14);
+		together.setMinutes(19);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+		
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				startHeartAnimation();
+			}, 5000);
+
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 500);
+
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
+	<script type="text/javascript">
+		$(function(){
+			$("body").danmu({
+				left: 0, //区域的左边边界位置，相对于父div 
+				top: 0 , //区域的上边边界位置，相对于父div 
+				height: 360, //区域的高度 width: 640, //区域的宽度 
+				zindex :100, //div的css样式zindex
+				speed:5000, //弹幕速度，飞过区域的毫秒数 
+				sumtime:900000000000 , //弹幕运行总时间
+				danmuss:{}, //danmuss对象，运行时的弹幕内容 
+				default_font_color:"#FFFFFF", //弹幕默认字体颜色 
+				font_size_small:24, //小号弹幕的字体大小,注意此属性值只能是整数
+				font_size_big:28, //大号弹幕的字体大小 
+				opacity:"0.7", //弹幕默认透明度 
+				top_botton_danmu_time:4000 //顶端底端弹幕持续时间 
+			});
+			sendss();
+			$('body').danmu('danmu_resume');
+		});
+		function sendss(){
+			var time = $('body').data("nowtime")+5;
+			var a_danmuzz = {"text":"感恩节快乐","color":"red" ,"size":"1","position":"0","time":time}; 
+			$('body').danmu("add_danmu",a_danmuzz);
+			var a_danmuzz = {"text":"圣诞节快乐","color":"red" ,"size":"1","position":"0","time":time + 50}; 
+			$('body').danmu("add_danmu",a_danmuzz);
+			var a_danmuzz = {"text":"元旦节快乐","color":"red" ,"size":"1","position":"0","time":time + 100}; 
+			$('body').danmu("add_danmu",a_danmuzz);
+			var a_danmuzz = {"text":"你快乐","color":"red" ,"size":"1","position":"0","time":time + 150}; 
+			$('body').danmu("add_danmu",a_danmuzz);
+			var a_danmuzz = {"text":"我快乐","color":"red" ,"size":"1","position":"0","time":time + 200}; 
+			$('body').danmu("add_danmu",a_danmuzz);
+			var a_danmuzz = {"text":"干啥啥快乐","color":"red" ,"size":"1","position":"0","time":time + 250}; 
+			$('body').danmu("add_danmu",a_danmuzz);
+		}
+	</script>
+</body>
+</html>
